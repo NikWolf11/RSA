@@ -9,12 +9,7 @@ namespace RSA
     {
         public static Key KeyGenerator()
         {
-            var random = new Random();
-            Key key;
-            key.p = GetPrime(random);
-            key.q = GetPrime(random);
-            key.n = key.p * key.q;
-            do
+           
             {
                 key.E = (ulong) random.Next(3, (int) ((key.p - 1)*(key.q - 1) >> 1));
             } while (GCD(key.E, (key.p - 1)*(key.q - 1)) != 1);
